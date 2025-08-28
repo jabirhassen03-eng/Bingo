@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Bingo Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+   
+</head>
+<body>
+    <!-- Modal container -->
+    <div class="modal" id="cartelaModal">
+        <div class="modal-content">
+            <!-- <button class="modal-block-btn" id="modalBlockBtn">
+                <i class="fas fa-times">block</i>
+            </button> -->
+           
+            <div class="modal-cartela-container" id="modalCartelaContent">
+                <!-- Cartela will be inserted here -->
+            </div>
+        </div>
+        <button class="modal-good-btn" id="good">
+                <i class="fas fa-times">Good Bingo</i>
+            </button>
+
+            <button class="modal-no-btn" id="no">
+                <i class="fas fa-times">No Bingo</i>
+            </button>
+
+         <button class="modal-close-btn" id="modalCloseBtn">
+                <i class="fas fa-times">cancel</i>
+            </button>
+            <div class="cartela-modal-header" id="bbb"></div>
+            <div class="bonm" id="bonm"> THE BOARD NOT WON </div>
+
+    </div>
+    
+    <!-- Confirmation Modal -->
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="confirmation-content">
+            <div class="confirmation-message">Are you sure you want to finished the game?</div>
+            <div class="confirmation-buttons">
+                <button class="confirmation-btn ok" id="confirmOk">Yes i'm sure</button>
+                <button class="confirmation-btn cancel" id="confirmCancel">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sound-controls">
+        <button class="sound-btn" id="toggleSoundBtn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <div class="sound-status" id="soundStatus"></div>
+    </div>
+    
+    <div class="container">
+       
+        
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <div class="logos">
+                <div>
+                    <img src="bing.jpg" alt="">
+                </div><h2>Best <span>Bingo</span></h2></div>
+                <div>
+                    <marquee behavior="scroll" direction="up" scrollamount="1" width="25%" height="19">Play and Enjoy 
+                         <br>Win Big Prize<br>Enjoy It !!! <br> With Best Bingo <br>Good Luck !!!
+                    </marquee>
+                </div>
+            
+            <div>
+            <h2 class="section-title">Bingo Login</h2>
+            <div class="login-form">
+                <div class="login-error" id="loginError">Invalid username or password</div>
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="username" placeholder="Enter admin username">
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" placeholder="Enter admin password">
+                </div>
+                <div class="controls">
+                    <button class="btn start" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Board Selection Page -->
+        <div id="selectionPage" class="page">
+            
+
+             <header id="hhh" class="hhh">
+                
+           
+            
+            <h1><i class="fasfa-dice"></i>Best Bingo</h1>
+            
+          
+            
+            <!-- Utility buttons in top-right corner -->
+            <div class="utility-buttons">
+                <button class="util-btn" id="eyeButton">
+                    <i class="fasfa-eye">👁️</i>
+                    <div class="badge" id="selectedBadge">0</div>
+                </button>
+                <button class="util-btn" id="cartButton">
+                    <i class="fasfa-shopping-cart">🛒</i>
+                    <!-- 🛒 -->
+                </button>
+                 <button class="util-btn" id="logOut">
+                    <i class="logout">Logout</i>
+                    
+                </button>
+            </div>
+
+             <!-- Color buttons in top-left corner -->
+            <div class="color-buttons">
+                <button class="color-btn black" onclick="changeBoardColor('black')">
+                    <i class="fas fa-square">black</i>
+                </button>
+                <button class="color-btn green" onclick="changeBoardColor('green')">
+                    <i class="fas fa-square">green</i>
+                </button>
+                <button class="color-btn blue" onclick="changeBoardColor('blue')">
+                    <i class="fas fa-square">blue</i>
+                </button>
+                <button class="color-btn yellow" onclick="changeBoardColor('yellow')">
+                    <i class="fas fa-square">yellow</i>
+                </button>
+            </div>
+           
+
+        </header>
+        <div class="nones">
+          <!-- Amount control in center -->
+            <span class="amount-control">
+                <div class="amm">Amount</div>
+                <button class="amount-btn" id="decreaseAmount">-</button>
+                <div class="amount-display" id="amountDisplay">10</div>
+                <button class="amount-btn" id="increaseAmount">+</button>
+            </span>
+            
+            <!-- Game counter -->
+            <span class="game-counter">
+                <div class="counter-label">Games</div>
+                <span class="counter-value" id="gameCount">0</span>
+            </span>
+
+            <!-- Session counter -->
+            <div class="session-counter">
+                <span class="counter-title">wallet Status</span>
+                <span class="counter-display" id="sessionCounter"></span>
+            </div>
+            
+                
+                 
+            </div>
+            
+           <!-- <h2 class="section-title">Select Your Boards</h2>
+             <div class="board-count">Selected: <span id="selectedCount">0</span> boards</div>
+             -->
+            <div class="boardpage" id="ppp">
+            <div class="boards-container" id="boardsContainer">
+                <!-- Boards will be generated here -->
+                 
+            </div> 
+            <div id="mmm" class="mnmn">
+            <div class="boards-container" id="boardsContainers">
+                <!-- Boards will be generated here -->
+                 
+            </div>  
+            </div>
+            </div>
+            <button class="buttsss" id="buttss">1-100</button>
+             <button class="buttsss" id="buttsss">101-400</button>
+            
+            <div class="controlss">
+                <button class="btn clear" id="clearSelectionBtn">
+                    <i class="fas fa-broom"></i> Clear
+                </button>
+                <button class="btn start" id="startGameBtn">
+                    <i class="fas fa-play"></i> Start Game
+                </button>
+            </div>
+        </div>
+        
+        <!-- Game Page -->
+        <div id="gamePage" class="page">
+           
+            
+            <!-- Horizontal number display -->
+            <div class="number-display-container">
+                
+                <div class="letter-row">
+                    <div class="letter-header">B</div>
+                    <div class="number-grid" id="bNumbers"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-header">I</div>
+                    <div class="number-grid" id="iNumbers"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-header">N</div>
+                    <div class="number-grid" id="nNumbers"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-header">G</div>
+                    <div class="number-grid" id="gNumbers"></div>
+                </div>
+                <div class="letter-row">
+                    <div class="letter-header">O</div>
+                    <div class="number-grid" id="oNumbers"></div>
+                </div>
+            </div>
+
+            <!-- Color buttons in top-left corner -->
+            <div class="color">
+                <button class="color-btn black" id="black">
+                    <i class="fas fa-square">black</i>
+                </button>
+                <button class="color-btn green" id="green">
+                    <i class="fas fa-square">green</i>
+                </button>
+                <button class="color-btn blue" id="blue">
+                    <i class="fas fa-square">blue</i>
+                </button>
+                <button class="color-btn yellow" id="yellow">
+                    <i class="fas fa-square">yellow</i>
+                </button>
+            </div>
+
+            <div class="game-controls">
+                <div class="control-group">
+
+
+                     <div class="number-display" id="currentNumber">
+                        <div class="letter" id="currentLetter"></div>
+                        <div id="currentDigit"></div>
+                    </div>
+                
+                
+                <div class="control-group">
+                    
+                    <div class="called-numbers">
+                        <div class="numbers-list" id="calledNumbersList"></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+             <div class="controlds">
+                         <button class="btn call-next" id="callNextBtn">
+                            <i class="fas fa-forward"></i> Call Next
+                        </button>
+                        <button class="btn" id="playPauseBtn">
+                            <i class="fas fa-play"></i> Play
+                        </button>
+                        <button class="btn" id="shuffleBtn">
+                            <i class="fas fa-random"></i> Shuffle
+                        </button>
+                        <button class="btn back" id="backBtn">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label for="speedSlider">
+                            <i class="fas fa-tachometer-alt"></i> Call Speed: <span id="speedValue">3.3s</span>
+                        </label>
+                        <input type="range" id="speedSlider" class="slider" min="500" max="4000" step="100" value="3300">
+                    </div>
+                    
+                   
+            
+            <!-- Check board section -->
+            <div class="check-container">
+            
+                <div class="board-input">
+                    <input type="number" id="boardNumberInput" min="1" max="400" placeholder="Enter board number (1-400)">
+                    <button id="checkBoardBtn">Check Board</button>
+                </div>
+                <div class="error-message" id="errorMessage">Please enter a valid board number between 1-400</div>
+                <div class="error-message" id="notSelectedMessage" style="display:none;">This board is not selected</div>
+            </div>
+            
+            
+            <div class="selected-boards" id="selectedBoardsContainer">
+                <!-- Selected boards will be displayed here -->
+            </div>
+            <div class="countc">
+                <div class="titt">Total Calls</div>
+                <div class="count" id="count"></div>
+            </div>
+                 <div class="countcc">
+                <div class="titts">prev Calls</div>
+                <div class="countr" id="countr"></div>
+            </div>
+            
+            
+            <!-- Prize display -->
+            <div class="prize-container">
+                <div class="prize-label">Winner Prize</div>
+                <div class="prize-amount" id="prizeAmount">0</div>
+                <div  class="prize-amounts" id="prizeAmounts">Birr</div>
+                
+            </div>
+        </div>
+        
+                   
+
+              </div>
+
+                   
+        <!-- Stats Page -->
+        <div id="statsPage" class="pages">
+            <div class="controls" style="justify-content: flex-start; ">
+                <button class="btn back" id="backToSelectionBtn">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            
+            
+            
+            <div class="stats-container">
+                <div class="pkg">
+                    <span class="wallet">Balance : 
+                    <span  id="wallet">
+                    <!-- <span style="display: block;">Birr</span> --></span></span>
+                </div>
+                <div class="stat-items">
+                    <span class="stat-labels">Total Games Played:   <span class="stat-values" id="totalGames">0</span></span>   
+                    
+                </div>
+                <div class="stat-items">
+                    <span class="stat-labels">Total Distributed:    <span class="stat-values" id="totalPrize">0</span></span>
+                    
+                </div>
+                
+                <!-- <div class="stat-item">
+                    <span class="stat-label">Total Profit :</span>
+                <span class="stat-value" id="profit"></span>
+                </div> -->
+            
+               <div class="momop">
+                <div style="color: black;" class="mkomko">              
+                    <h4>Id</h4>
+                    <h4> player</h4>
+                    <h4>Amount</h4>
+                    <h4>Fee</h4>
+                    <h4>Total amount</h4>
+                    <h4>Winner</h4>
+                </div>
+                <div id="gameHistory">
+                    
+                    <!-- Game history will be inserted here -->
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
